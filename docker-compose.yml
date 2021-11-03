@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  products:
+    image: adichallenge/adichallenge:product-service
+    restart : always
+    links :
+        - mongo
+    ports:
+        - "3001:3001"
+  price-engine:
+    container_name: price-engine
+    image: "adichallenge/adichallenge:product-engine"
+    ports:
+        - "3000:3000"
+  mongo:
+    container_name: mongo
+    image: mongo
+    ports:
+        - "27017:27017"
